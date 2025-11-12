@@ -1,13 +1,13 @@
 <?php
-$subdomain = $_POST['subdomain']; // 追加するサブドメイン名をPOSTで取得
-$ip_address = $_POST['ip_address']; // 追加するサーバーIPアドレスをPOSTで取得
+$subdomain = $_POST['subdomain']; // 添加子域名POST获得
+$ip_address = $_POST['ip_address']; // 要添加的服务器IP地址POST获得
 
-// APIキーとエンドポイントを設定
+// API设置关键点和端点
 $api_key = "YOUR_API_KEY";
 $email = "YOUR_CLOUDFLARE_EMAIL";
 $endpoint = "https://api.cloudflare.com/client/v4/zones/DOMAIN_ZONE_ID/dns_records";
 
-// リクエストデータ
+// 请求数据
 $data = array(
     "type" => "A",
     'name' => $subdomain,
@@ -17,7 +17,7 @@ $data = array(
 );
 
 
-// cURLオプションを設定する
+// cURL设置选项
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $endpoint);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -29,11 +29,11 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     "X-Auth-Key: " . $api_key
 ));
 
-// cURLを実行する
+// cURL执行
 $response = curl_exec($ch);
 curl_close($ch);
 
-// 結果を解析する
+// 分析结果
 $result = json_decode($response, true);
 if ($result["success"] == true) {
     echo "Record A has been successfully added to CloudFlare.<br>It takes 10 minutes~1 hour for SSL and DDoS protection to take effect on the domain.<br>Changing the DNS or changing the IP address via VPN and accessing the domain in a private window may speed up the reflection.";
