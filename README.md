@@ -29,7 +29,7 @@
 
 将 add_subdomain.php 中的$email替换为您在 CloudFlare 注册的电子邮件地址。
 
-替换add_subdomain.php$endpoint中的 $DOMAIN_ZONE_ID。要获取ZONE_ID，请转到 CloudFlare 仪表板，单击您的域，它将列在 [概述] 下。
+替换add_subdomain.php$endpoint中的 $DOMAIN_ZONE_ID。要获取 ZONE_ID（区域ID），请转到 CloudFlare 仪表板，单击您的域，它将列在 [概述] 下。
 
 
 # 注意.
